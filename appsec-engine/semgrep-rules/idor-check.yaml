@@ -1,0 +1,17 @@
+rules:
+  - id: fastapi-missing-auth-on-account-lookup
+    patterns:
+      - pattern-inside: |
+          @app.$METHOD("/api/v1/accounts/{$PARAM}/$ENDPOINT")
+          def $FUNC($PARAM: $TYPE, ...):
+            ...
+      - pattern-not-inside: |
+          @app.$METHOD(...)
+          def $FUNC(..., $USER=Depends(...), ...):
+            ...
+    message: "High: Endpoint retrieves account records by path parameter without an authentication dependency (BOLA/IDOR risk)."
+    languages: [python]
+    severity: ERROR
+    metadata:
+      cwe: "CWE-639: Authorization Bypass Through User-Controlled Key"
+      owasp: "API1:2023 Broken Object Level Authorization"
