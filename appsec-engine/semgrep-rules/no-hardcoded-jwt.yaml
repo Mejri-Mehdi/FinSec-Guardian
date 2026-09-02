@@ -1,0 +1,12 @@
+rules:
+  - id: python-jwt-hardcoded-secret
+    patterns:
+      - pattern-either:
+          - pattern: jwt.encode($PAYLOAD, "...", ...)
+          - pattern: jwt.decode($TOKEN, "...", ...)
+    message: "Critical: Hardcoded secret key detected in JWT operation. Secrets must be loaded via secure environment configuration."
+    languages: [python]
+    severity: ERROR
+    metadata:
+      cwe: "CWE-798: Use of Hard-coded Credentials"
+      owasp: "API2:2023 Broken Authentication"
