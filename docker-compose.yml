@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  finsec-vulnerable-api:
+    build:
+      context: .
+      dockerfile_inline: |
+        FROM python:3.11-slim
+        WORKDIR /workspace
+        COPY app/requirements.txt ./app/requirements.txt
+        RUN pip install --no-cache-dir -r app/requirements.txt
+        COPY app/ ./app/
+        EXPOSE 8000
+        CMD ["uvicorn", "app.vulnerable.main:app", "--host", "0.0.0.0", "--port", "8000"]
+    container_name: finsec_vulnerable_api
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  finsec-secure-api:
+    build:
+      context: .
+      dockerfile_inline: |
+        FROM python:3.11-slim
+        WORKDIR /workspace
+        COPY app/requirements.txt ./app/requirements.txt
+        RUN pip install --no-cache-dir -r app/requirements.txt
+        COPY app/ ./app/
+        EXPOSE 8001
+        CMD ["uvicorn", "app.secure.main:app", "--host", "0.0.0.0", "--port", "8001"]
+    container_name: finsec_secure_api
+    ports:
+      - "8001:8001"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - JWT_SECRET_KEY=finsec-super-secure-production-signing-key-32-chars-min
