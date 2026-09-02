@@ -1,0 +1,47 @@
+name: FinSec DevSecOps Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  appsec-scan:
+    name: Application Security Gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 1. Secret Scanning (Gitleaks)
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 2. Custom SAST Scanning (Semgrep)
+        uses: returntocorp/semgrep-action@v1
+        with:
+          config: >-
+            p/default
+            appsec-engine/semgrep-rules/
+          generateSarif: "semgrep.sarif"
+
+      - name: 3. SCA & Dependency Vulnerability Scan (Trivy)
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'table'
+          severity: 'CRITICAL,HIGH'
+
+      - name: 4. Build & Launch API for DAST
+        run: |
+          pip install -r app/requirements.txt
+          nohup uvicorn app.vulnerable.main:app --port 8000 &
+          sleep 3
+
+      - name: 5. DAST API Fuzzing (Schemathesis)
+        run: |
+          pip install schemathesis
+          st run http://localhost:8000/openapi.json --checks all --stateful=links || true
