@@ -1,0 +1,15 @@
+# appsec-engine/semgrep-rules/ssrf-detection.yaml
+rules:
+  - id: python-fastapi-ssrf-requests
+    patterns:
+      - pattern-inside: |
+          @app.$METHOD(...)
+          def $FUNC(..., $PAYLOAD: dict, ...):
+            ...
+      - pattern: requests.$HTTP_METHOD($PAYLOAD.get(...), ...)
+    message: "High: Potential SSRF detected. User-controlled dictionary key is directly passed to requests.$HTTP_METHOD without URL allowlisting."
+    languages: [python]
+    severity: ERROR
+    metadata:
+      cwe: "CWE-918: Server-Side Request Forgery (SSRF)"
+      owasp: "API7:2023 Server-Side Request Forgery"
