@@ -238,8 +238,3 @@ The GitHub Actions pipeline (`.github/workflows/appsec-pipeline.yml`) implements
 
 **Created by**: **Mehdi Mejri**  
 This project was developed independently out of curiosity, passion for Application Security (AppSec), and a drive to explore the practical boundaries of modern fintech API defenses, OWASP vulnerabilities, and DevSecOps engineering.
-
----
-
-## 📜 License
-This project is licensed under the MIT License for educational and AppSec training purposes.
