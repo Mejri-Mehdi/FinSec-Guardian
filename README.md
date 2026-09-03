@@ -242,6 +242,9 @@ python appsec-engine/report_generator.py
 Generated report is saved to: `docs/appsec-audit-report.md`.
 
 ---
+![alt text](</docs/screenshots/Screenshot 2026-09-03 113811.png>)
+---
+
 
 ## 🔄 DevSecOps Pipeline
 
