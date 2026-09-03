@@ -226,7 +226,11 @@ Located under `appsec-engine/semgrep-rules/`:
 
 ### Run SAST Scan:
 ```bash
-semgrep scan --config appsec-engine/semgrep-rules/ app/
+# Direct CLI Runner (Recommended on Windows, macOS, Linux):
+python appsec-engine/scan.py
+
+# Or via Docker:
+docker run --rm -v "${PWD}:/src" returntocorp/semgrep semgrep scan --config /src/appsec-engine/semgrep-rules/ /src/app/
 ```
 
 ---
