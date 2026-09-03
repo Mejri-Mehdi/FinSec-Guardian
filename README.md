@@ -10,7 +10,7 @@
 [![Docker Compose](https://img.shields.io/badge/Docker-Multi--Container-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 [![Semgrep SAST](https://img.shields.io/badge/Semgrep-Custom%20SAST-545BDE?style=for-the-badge&logo=semgrep&logoColor=white)](https://semgrep.dev/)
 [![CI/CD Security Gate](https://img.shields.io/badge/DevSecOps-GitHub%20Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/)
-
+ 
 <p align="center">
   <b>A dual-architecture AppSec laboratory comparing vulnerable financial microservices against production-hardened implementations with custom SAST rules, weaponized PoC exploits, and automated audit reporting.</b>
 </p>
