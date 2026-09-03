@@ -161,6 +161,11 @@ python exploits/poc_idor.py --url http://localhost:8001
 ```
 
 ---
+![alt text](<Screenshot 2026-09-03 111523.png>)
+---
+![alt text](<Screenshot 2026-09-03 111613.png>)
+---
+
 
 ### 2. Mass Assignment / Privilege Escalation (BOPLA)
 Bob (User 102) injects `{"is_admin": true, "role": "admin"}` into his profile update:
