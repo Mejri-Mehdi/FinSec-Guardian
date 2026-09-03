@@ -1,8 +1,8 @@
 # FinSec Guardian - Application Security Audit Report 🛡️
 
-**Generated**: `2026-09-03 10:25:26 UTC`  
+**Generated**: `2026-09-03 10:36:56 UTC`  
 **Target Scope**: `app/vulnerable/main.py` vs `app/secure/main.py`  
-**SAST Engine**: `Native SAST Engine (appsec-engine/semgrep-rules)`  
+**SAST Engine**: `FinSec SAST Rule Engine (appsec-engine/semgrep-rules)`  
 **Classification**: Internal Security Assessment
 
 ---

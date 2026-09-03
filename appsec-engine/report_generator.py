@@ -34,7 +34,7 @@ def print_banner():
             DevSecOps Engine & Security Audit Reporting Framework
     """)
 
-def run_command(cmd: List[str]) -> (int, str):
+def run_command(cmd: List[str], timeout: int = 8) -> (int, str):
     """Executes a shell command safely and returns exit code and output."""
     try:
         proc = subprocess.run(
@@ -44,9 +44,12 @@ def run_command(cmd: List[str]) -> (int, str):
             text=True,
             encoding="utf-8",
             errors="replace",
+            timeout=timeout,
             shell=(os.name == "nt")
         )
         return proc.returncode, proc.stdout
+    except subprocess.TimeoutExpired:
+        return 1, "Command timed out."
     except Exception as e:
         return 1, f"Command execution error: {str(e)}"
 
@@ -114,24 +117,23 @@ def run_native_sast_scanner() -> List[Dict[str, Any]]:
 def scan_sast() -> Dict[str, Any]:
     print("[*] 1/3 Running SAST Engine against codebase...")
     
-    # Try CLI Semgrep first
-    cmd = ["semgrep", "scan", "--config", "appsec-engine/semgrep-rules/", "--json", "app/"]
-    code, out = run_command(cmd)
-    
-    findings = []
-    try:
-        data = json.loads(out)
-        findings = data.get("results", [])
-        if findings:
-            print(f"    [+] Semgrep CLI completed. Identified {len(findings)} rule match(es).")
-            return {"success": True, "findings": findings, "engine": "Semgrep CLI"}
-    except Exception:
-        pass
+    # On Windows, Semgrep's pip binary contains incompatible libtree-sitter.dll.
+    # Use native SAST scanner directly to avoid Windows modal popups.
+    if sys.platform != "win32":
+        cmd = ["semgrep", "scan", "--config", "appsec-engine/semgrep-rules/", "--json", "app/"]
+        code, out = run_command(cmd)
+        try:
+            data = json.loads(out)
+            findings = data.get("results", [])
+            if findings:
+                print(f"    [+] Semgrep CLI completed. Identified {len(findings)} rule match(es).")
+                return {"success": True, "findings": findings, "engine": "Semgrep CLI"}
+        except Exception:
+            pass
 
-    # Fallback to Native SAST Analyzer if CLI Semgrep encounters Python 3.13 Windows bug
     findings = run_native_sast_scanner()
-    print(f"    [+] Native SAST Analyzer completed. Identified {len(findings)} security finding(s).")
-    return {"success": True, "findings": findings, "engine": "Native SAST Engine (appsec-engine/semgrep-rules)"}
+    print(f"    [+] SAST Rule Engine completed. Identified {len(findings)} security finding(s).")
+    return {"success": True, "findings": findings, "engine": "FinSec SAST Rule Engine (appsec-engine/semgrep-rules)"}
 
 def scan_sast_bandit() -> Dict[str, Any]:
     print("[*] 2/3 Running Bandit Python Security Linter...")
