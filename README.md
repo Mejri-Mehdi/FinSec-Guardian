@@ -14,7 +14,7 @@
 <p align="center">
   <b>A dual-architecture AppSec laboratory comparing vulnerable financial microservices against production-hardened implementations with custom SAST rules, weaponized PoC exploits, and automated audit reporting.</b>
 </p>
-
+ 
 [Quickstart](#-quickstart) •
 [Architecture](#-architecture) •
 [Vulnerabilities vs Remediations](#-vulnerabilities-vs-remediations) •
