@@ -210,6 +210,11 @@ python exploits/poc_ssrf_metadata.py --url http://localhost:8001
 ```
 
 ---
+![alt text](<Screenshot 2026-09-03 111948.png>)
+---
+![alt text](<Screenshot 2026-09-03 112004.png>)
+---
+
 
 ## 🔍 Custom Semgrep SAST Rules
 
