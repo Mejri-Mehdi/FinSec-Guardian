@@ -118,6 +118,19 @@ uvicorn app.secure.main:app --host 0.0.0.0 --port 8001 --reload
 ```
 
 ---
+![alt text](<Screenshot 2026-09-02 163226.png>)
+---
+![alt text](<Screenshot 2026-09-03 105732.png>)
+---
+![alt text](<Screenshot 2026-09-03 110327.png>)
+---
+![alt text](<Screenshot 2026-09-03 111344.png>)
+---
+![alt text](<Screenshot 2026-09-03 111416.png>)
+---
+![alt text](<Screenshot 2026-09-03 111431.png>)
+---
+
 
 ## 💥 Weaponized PoC Exploits
 
