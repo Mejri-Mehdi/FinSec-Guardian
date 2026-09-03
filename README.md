@@ -192,6 +192,11 @@ python exploits/poc_mass_assignment.py --url http://localhost:8001
 ```
 
 ---
+![alt text](<Screenshot 2026-09-03 111831.png>)
+---
+![alt text](<Screenshot 2026-09-03 111915.png>)
+---
+
 
 ### 3. Server-Side Request Forgery (SSRF)
 Targeting cloud instance metadata (`169.254.169.254`) through webhook verification:
