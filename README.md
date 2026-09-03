@@ -234,7 +234,7 @@ docker run --rm -v "${PWD}:/src" returntocorp/semgrep semgrep scan --config /src
 ```
 
 ---
-![alt text](<Screenshot 2026-09-03 114517.png>)
+![alt text](</docs/screenshots/Screenshot 2026-09-03 114517.png>)
 ---
 
 
