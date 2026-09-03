@@ -234,6 +234,11 @@ The GitHub Actions pipeline (`.github/workflows/appsec-pipeline.yml`) implements
 | `102` | `bob` | `user` | `$150.00` | Standard customer account (Used in PoCs) |
 | `999` | `admin` | `admin` | `$1,000,000.00` | Security Officer / Administrator |
 
+## 👨‍💻 Author & Motivation
+
+**Created by**: **Mehdi Mejri**  
+This project was developed independently out of curiosity, passion for Application Security (AppSec), and a drive to explore the practical boundaries of modern fintech API defenses, OWASP vulnerabilities, and DevSecOps engineering.
+
 ---
 
 ## 📜 License
