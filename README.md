@@ -161,9 +161,9 @@ python exploits/poc_idor.py --url http://localhost:8001
 ```
 
 ---
-![alt text](<Screenshot 2026-09-03 111523.png>)
+![alt text](</docs/screenshots/Screenshot 2026-09-03 111523.png>)
 ---
-![alt text](<Screenshot 2026-09-03 111613.png>)
+![alt text](</docs/screenshots/Screenshot 2026-09-03 111613.png>)
 ---
 
 
@@ -192,9 +192,9 @@ python exploits/poc_mass_assignment.py --url http://localhost:8001
 ```
 
 ---
-![alt text](<Screenshot 2026-09-03 111831.png>)
+![alt text](</docs/screenshots/Screenshot 2026-09-03 111831.png>)
 ---
-![alt text](<Screenshot 2026-09-03 111915.png>)
+![alt text](</docs/screenshots/Screenshot 2026-09-03 111915.png>)
 ---
 
 
@@ -210,9 +210,9 @@ python exploits/poc_ssrf_metadata.py --url http://localhost:8001
 ```
 
 ---
-![alt text](<Screenshot 2026-09-03 111948.png>)
+![alt text](</docs/screenshots/Screenshot 2026-09-03 111948.png>)
 ---
-![alt text](<Screenshot 2026-09-03 112004.png>)
+![alt text](</docs/screenshots/Screenshot 2026-09-03 112004.png>)
 ---
 
 
